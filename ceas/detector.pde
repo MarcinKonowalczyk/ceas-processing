@@ -17,7 +17,7 @@ class Detector {
     detector_numer = n;
     record_flag = false; 
     writer_exists = false;
-    last_recorded_count = -1;
+    last_recorded_count = 0;
   }
 
   void show() {
@@ -63,6 +63,7 @@ class Detector {
     if (!record_flag) {
       output = createWriter("D" + detector_numer + "_data.txt");
       output.println("frame\tcount");
+      output.println(frameCount + "\t0");
       record_flag = true;
     }
   }
@@ -82,7 +83,7 @@ class Detector {
       output.flush(); // Write remaining data
       output.close(); 
       record_flag = false;
-      last_recorded_count = -1;
+      last_recorded_count = 0;
     }
   }
 }
