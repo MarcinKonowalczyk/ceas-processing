@@ -54,6 +54,7 @@ axis square; grid on; box on;
 xlim([-10 610]); ylim([0 100]);
 xlabel('time / frames'); ylabel('counts');
 legend(h,'No absorber','Absorber','Exp. fit');
+title('Cavity ringdown');
 
 %%
 figure(2); clf; hold on;

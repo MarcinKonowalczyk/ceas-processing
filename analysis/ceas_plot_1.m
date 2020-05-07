@@ -41,14 +41,17 @@ pf1 = fminsearch(f,[10,100]);
 f = @(p) mean((cc2-m(t2,p)).^2);
 pf2 = fminsearch(f,[10,100]);
 
-%%
+%% Plot
 h = [];
 figure(1); clf; hold on;
 h(1) = plot(t1,cc1,'-');
 plot(t1,m(t1,pf1),'k--','LineWidth',1);
-plot(t2,cc2,'-');
-plot(t2,m(t2,pf2),'k--','LineWidth',1);
+h(2) = plot(t2,cc2,'-');
+h(3) = plot(t2,m(t2,pf2),'k--','LineWidth',1);
 axis square; grid on; box on;
 xlim([-10 2e3]); ylim([0 20]);
 xlabel('time / frames'); ylabel('counts');
-%legend(h,'No absorber','Absorber','Exp. fit');
+%legend(h,...
+%    'No absorber','Absorber','Exp. fit',...
+%    'Location','SouthEast');
+%title('Intensity accumulation in the cavity');
