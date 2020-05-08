@@ -39,7 +39,7 @@ class Photon {
   void show() {
     noFill();
     float[] photon_color = {252, 186, 3};
-    if (speed_of_light>1) {
+    if (speed_of_light>5) {
       for (int i = 1; i < xpos_history.length; i++) {
         float alpha = (1.0*i/(xpos_history.length-1));
         //alpha = alpha*alpha;

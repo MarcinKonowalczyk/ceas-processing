@@ -6,15 +6,17 @@ ArrayList<Detector> D = new ArrayList<Detector>(0);
 
 boolean spawn_toggle = false; // Toggle continous spawn
 boolean spawn_single = false; // Spawn single burst
-int Nspawn = 16; // Number of photons to spawn per click
+int Nspawn = 32; // Number of photons to spawn per click
 int speed_of_light = 10; // Pixels per frame
 
 void setup() {
-  size(1000, 500);
-  //fullScreen();
+  //size(1000, 500);
+  fullScreen();
   ellipseMode(CENTER);
   rectMode(CORNERS);
   frameRate(30);
+  
+  surface.setTitle("ceas-processing");
   
   float scene_height = 300;
   float[] align_rungs = new float[5];
@@ -53,7 +55,7 @@ void draw() {
   // Spawn new stuff
   if (mousePressed | spawn_toggle | spawn_single) {
     for (int i=0; i < Nspawn; i++) {
-      float yoffset = randomGaussian()*1; float xoffset = random(-10,10);
+      float yoffset = randomGaussian()*1; float xoffset = random(-1,1)*speed_of_light;
       P.add(new Photon(mouseX+xoffset, mouseY+yoffset));
       spawn_single = false; // Reset spawn single
     }

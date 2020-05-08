@@ -13,3 +13,4 @@ ceas/D2_data.txt
 ceas/D3_data.txt
 analysis/*.txt
 *.m~
+analysis/temp.svg
