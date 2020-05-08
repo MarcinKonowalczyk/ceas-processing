@@ -9,12 +9,15 @@ boolean spawn_single = false; // Spawn single burst
 int Nspawn = 32; // Number of photons to spawn per click
 int speed_of_light = 10; // Pixels per frame
 
+//int persistance_alpha = 64;
+
 void setup() {
   //size(1000, 500);
   fullScreen();
   ellipseMode(CENTER);
   rectMode(CORNERS);
   frameRate(30);
+  //noSmooth();
   
   surface.setTitle("ceas-processing");
   
@@ -47,20 +50,20 @@ void setup() {
 }
 
 void draw() {
-  background(10);
+  noStroke();
+  fill(10,64);
+  rect(0,0,width,height);
+  //background(10,0);
   noStroke();
   fill(255);
   ellipse(mouseX,mouseY,2,2);
   
   // Spawn new stuff
   if (mousePressed | spawn_toggle | spawn_single) {
-    for (int i=0; i < Nspawn; i++) {
-      float yoffset = randomGaussian()*1; float xoffset = random(-1,1)*speed_of_light;
-      P.add(new Photon(mouseX+xoffset, mouseY+yoffset));
-      spawn_single = false; // Reset spawn single
-    }
+     spawn_on_click();
   }
 
+  // Draw detectors and record any photons counted
   for (Detector det : D) {
     det.show();
     det.record_line();
@@ -116,10 +119,8 @@ void keyPressed() {
   }
 }
 
+// Stop any recording detectors bfore closing the app
 void stop() {
-  for (Detector det : D) {
-    det.record_flag = false;
-    det.stop_recording();
-  }
+  for (Detector det : D) {det.stop_recording();}
   exit();
 }
