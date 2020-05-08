@@ -25,32 +25,15 @@ class Photon {
     ypos += random(-0.2, 0.2); // Dispersion
 
     // Die if out of the frame
-    if (xpos > width | xpos<0) {
-      alive = false;
-    }
-    if (ypos > height | ypos<0) {
-      alive = false;
-    }
+    if (xpos > width | xpos<0) {alive = false;}
+    if (ypos > height | ypos<0) {alive = false;}
 
     // Interact with everything
-    for (Mirror mirror : M) {
-      mirror.interact(this);
-    }
-    for (Absorber abs : A) {
-      abs.interact(this);
-    }
-    for (Scaterer sct : S) {
-      sct.interact(this);
-    }
-    for (Detector det : D) {
-      det.interact(this);
-    }
+    for (Mirror mirror : M) {mirror.interact(this);}
+    for (Absorber abs : A) {abs.interact(this);}
+    for (Scaterer sct : S) {sct.interact(this);}
+    for (Detector det : D) {det.interact(this);}
 
-    // Position history (for drawing)
-    //for (int i = 1; i < xpos_history.length; i++) {
-    //  xpos_history[i-1] = xpos_history[i]; ypos_history[i-1] = ypos_history[i];
-    //}
-    //xpos_history[xpos_history.length-1] = xpos; ypos_history[ypos_history.length-1] = ypos;
   }
 
   // Draw self
@@ -63,11 +46,30 @@ class Photon {
   }
 }
 
-void spawn_on_click() {
+void spawn_at_xy(float x, float y) {
   for (int i=0; i < Nspawn; i++) {
     float yoffset = randomGaussian()*2; 
     float xoffset = randomGaussian()*speed_of_light/2 + speed_of_light/2;
-    P.add(new Photon(mouseX+xoffset, mouseY+yoffset));
+    P.add(new Photon(x+xoffset, y+yoffset));
     spawn_single = false; // Reset spawn single
   }
 }
+
+
+// Photon source
+class Source {
+  float xpos, ypos;
+  int phase;
+  Source(float x, float y) {
+    xpos = x; ypos = y;
+    phase = round(random(0,30));
+  }
+  
+  void show() {
+  noFill(); stroke(255);
+  float size = ((frameCount+phase) % 30)/30.0*10.0+10;
+  strokeWeight(1);
+  ellipse(xpos,ypos,size,size);
+  }
+}
+    

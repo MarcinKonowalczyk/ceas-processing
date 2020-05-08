@@ -38,6 +38,7 @@ class Mirror {
             } else { // Right reflection
               p.xpos = xpos+(xpos-p.xpos); p.speedx = -p.speedx;
             }
+            p.ypos += randomGaussian()*1;
           }
         }
       }

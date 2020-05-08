@@ -31,7 +31,8 @@ void draw_control_hints() {
   "[spacebar] - single spawn\n" +
   "[up/down] - spawn rate\n" +
   "[left/right] - speed of light\n" +
-  "[T] - toggle spawn\n" + 
+  "[T] - toggle spawn\n" +
+  "[S] - spawn source\n" +
   "[L] - show labels\n" + 
   "[R] - toggle record";
   text(t, 5, 5);

@@ -3,6 +3,7 @@ ArrayList<Mirror> M = new ArrayList<Mirror>(0);
 ArrayList<Absorber> A = new ArrayList<Absorber>(0);
 ArrayList<Scaterer> S = new ArrayList<Scaterer>(0);
 ArrayList<Detector> D = new ArrayList<Detector>(0);
+ArrayList<Source> R = new ArrayList<Source>(0);
 
 boolean spawn_toggle = false; // Toggle continous spawn
 boolean spawn_single = false; // Spawn single burst
@@ -59,10 +60,12 @@ void draw() {
   ellipse(mouseX,mouseY,2,2);
   
   // Spawn new stuff
-  if (mousePressed | spawn_toggle | spawn_single) {
-     spawn_on_click();
+  if (mousePressed | spawn_toggle | spawn_single) {spawn_at_xy(mouseX,mouseY);}
+  for (Source src : R) {
+    spawn_at_xy(src.xpos,src.ypos);
+    src.show();
   }
-
+  
   // Draw detectors and record any photons counted
   for (Detector det : D) {
     det.show();
@@ -93,6 +96,7 @@ void keyPressed() {
   if (keyCode == BACKSPACE) {
     for (int i = P.size()-1; i >= 0; i--) {P.remove(i);}
     for (Detector det : D) {det.count = 0; det.stop_recording();}
+    for (int i = R.size()-1; i >= 0; i--) {R.remove(i);}
     spawn_toggle = false;
   } else if (keyCode == 32) { // Space = Single spawn
     spawn_single = true;
@@ -116,6 +120,8 @@ void keyPressed() {
     else {speed_of_light = min(round(speed_of_light+5),40);}
   } else if (keyCode == LEFT) { // LEFT
     speed_of_light = max(round(speed_of_light-5),1);
+  } else if (keyCode == 83) { // S
+    R.add(new Source(mouseX,mouseY));
   }
 }
 
