@@ -10,13 +10,13 @@ class Mirror {
   
   void show() {
     noFill();
-    stroke(240);
+    stroke(#bbbbbb);
     strokeWeight(4);
     line(xpos, y1pos, xpos, y2pos);
     
     // Absorbance text
     if (text_flag) {
-      fill(128);
+      fill(#888888);
       strokeWeight(2.5);
       textSize(12);
       textAlign(CENTER, BOTTOM);
@@ -38,7 +38,7 @@ class Mirror {
             } else { // Right reflection
               p.xpos = xpos+(xpos-p.xpos); p.speedx = -p.speedx;
             }
-            p.ypos += randomGaussian()*1;
+            p.ypos += randomGaussian()*2;
           }
         }
       }

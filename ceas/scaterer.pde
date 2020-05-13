@@ -13,10 +13,10 @@ class Scaterer {
 
   void show() {
     noStroke();
-    fill(105, 42, 39);//(107, 51, 48);
+    fill(#966e66);//(107, 51, 48);
     rect(tlx, tly, brx, bry, 5);
 
-    fill(219, 149, 147);
+    fill(#492821);
     strokeWeight(2.5);
     textSize(12);
     textAlign(CENTER, TOP);

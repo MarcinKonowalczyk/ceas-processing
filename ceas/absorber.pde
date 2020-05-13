@@ -11,11 +11,12 @@ class Absorber {
   void show() {
     noStroke();
     //strokeWeight(1); stroke(128);
-    fill(54, 87, 28);//(51, 107, 48);
+    fill(#4b757a);//(51, 107, 48);
     rect(tlx,tly,brx,bry,5);
     
     // Absorbance text
-      fill(134, 181, 98);
+      //fill(#00202f);
+      fill(#072427);
       strokeWeight(2.5);
       textSize(12);
       textAlign(CENTER, TOP);

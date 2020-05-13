@@ -27,7 +27,9 @@ void draw_control_hints() {
   strokeWeight(2.5);
   textSize(10);
   textAlign(LEFT, TOP);
-  String t = "[backspace] - reset\n" +
+  String t = "[esape] - quit\n" + 
+  "[backspace] - reset\n" +
+  "----------\n" + 
   "[spacebar] - single spawn\n" +
   "[up/down] - spawn rate\n" +
   "[left/right] - speed of light\n" +

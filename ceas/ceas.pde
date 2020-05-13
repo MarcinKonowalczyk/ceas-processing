@@ -10,15 +10,13 @@ boolean spawn_single = false; // Spawn single burst
 int Nspawn = 32; // Number of photons to spawn per click
 int speed_of_light = 10; // Pixels per frame
 
-//int persistance_alpha = 64;
-
 void setup() {
-  //size(1000, 500);
-  fullScreen();
+  //size(1000, 500, P2D);
+  fullScreen(P2D);
   ellipseMode(CENTER);
   rectMode(CORNERS);
-  frameRate(30);
-  //noSmooth();
+  frameRate(40);
+  noSmooth();
   
   surface.setTitle("ceas-processing");
   
@@ -33,7 +31,7 @@ void setup() {
   
   A.add(new Absorber(
     width/2-50-100, align_rungs[2]+10,
-    width/2+50-100, align_rungs[3]-10, 0.04));
+    width/2+50-100, align_rungs[3]-10, 0.05));
   
   S.add(new Scaterer(
     width/2-50+100, align_rungs[3]+10,
@@ -52,7 +50,7 @@ void setup() {
 
 void draw() {
   noStroke();
-  fill(10,64);
+  fill(#1c1e26,40); //16
   rect(0,0,width,height);
   //background(10,0);
   noStroke();
@@ -77,6 +75,8 @@ void draw() {
   for (Scaterer sct : S) {sct.show();}
   
   // Update and draw photon
+  noFill(); stroke(#d25470); // Photon colors out of the loop to lighten up the draw
+  //stroke(#17a2af);
   for (int i = P.size()-1; i >= 0; i--) {
     Photon photon = P.get(i);
     if (!photon.alive) {P.remove(i);}
@@ -112,7 +112,7 @@ void keyPressed() {
     for (Absorber abs : A) {abs.text_flag = !abs.text_flag;}
     for (Scaterer sct : S) {sct.text_flag = !sct.text_flag;}
   } else if (keyCode == UP) { // UP
-    Nspawn = min(round(Nspawn*2),8192);
+    Nspawn = min(round(Nspawn*2),16384);
   } else if (keyCode == DOWN) { // DOWN
     Nspawn = max(round(Nspawn/2),1);
   } else if (keyCode == RIGHT) { // RIGHT
