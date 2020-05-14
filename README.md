@@ -26,11 +26,11 @@ Analysis scripts written in Matlab. Data recorded from the detectors in the demo
 
 CRDS measures the lifetime of light inside of the cavity:
 
-<img src="./analysis/figures/crds.png" width="60%">
+<center><img src="./analysis/figures/crds.png" width="50%"></center>
 
 CEAS measures the changes in the steady-state of light in the cavity:
 
-<img src="./analysis/figures/ceas.png" width="60%">
+<center><img src="./analysis/figures/ceas.png" width="50%"></center>
 
 ## ToDo's
 
