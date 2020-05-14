@@ -22,13 +22,17 @@ You can also compile the whole sketch into an executable with Processing. `File 
 
 ## Analysis
 
-Analysis scripts written in Matlab. Data recorded from the detectors in the demonstration. CRDS measures the lifetime of light inside of the cavity. CEAS measures the changes in the steady-state of light in the cavity
+Analysis scripts written in Matlab. Data recorded from the detectors in the demonstration.
 
-![CRDS](./analysis/figures/crds.png)
+CRDS measures the lifetime of light inside of the cavity:
 
-![CEAS](./analysis/figures/ceas.png)
+<img src="./analysis/figures/crds.png" width="300">
 
-## ToDos
+CEAS measures the changes in the steady-state of light in the cavity:
+
+<img src="./analysis/figures/ceas.png" width="300">
+
+## ToDo's
 
 - More general collision detection? 
 - Evanescent wave cavities (This would require coding in a separate behavior for the photons when they are in the evanescent wave, and will probably be non-trivial)
