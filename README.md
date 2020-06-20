@@ -6,7 +6,7 @@ Simple demonstration of concepts of Cavity Enhanced Spectroscopy. Written in Pro
 - Download [Processing](https://processing.org)
 - Run `.ceas/ceas.pde`
 
-You can also compile the whole sketch into an executable with Processing. `File -> Export Application...`
+You can also compile the whole sketch into an executable with Processing: `File -> Export Application...`
 
 ## Controls
 
@@ -35,4 +35,6 @@ CEAS measures the changes in the steady-state of light in the cavity:
 ## ToDo's
 
 - More general collision detection? 
+- Curved mirrors
+- Show the requirement for the cavity stability criterion
 - Evanescent wave cavities (This would require coding in a separate behavior for the photons when they are in the evanescent wave, and will probably be non-trivial)
